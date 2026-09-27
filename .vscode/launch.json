@@ -1,0 +1,14 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "editor-browser",
+            "request": "launch",
+            "name": "Open index.html",
+            "url": "file:///c%3A/Users/calbe/Downloads/Universidad/8semestre/1corte/Arquitectura%20de%20Software%2020262%20-%20N5%20GrB/CodigoProyectoSOC/cafe-express-modular/index.html"
+        }
+    ]
+}

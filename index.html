@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Café Express · Sistema de pedidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="logo">☕</span><div><b>Café Express</b><span>Pedidos en línea</span></div></div>
+  <div class="role-switch">
+    <button class="role-btn active" data-role="cliente">Cliente</button>
+    <button class="role-btn" data-role="admin">Administrador</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ VISTA CLIENTE ============ -->
+  <section class="view active" id="view-cliente">
+    <div class="cats" id="cliente-subnav">
+      <button class="cat-chip active" data-sub="menu">Ver menú y pedir</button>
+      <button class="cat-chip" data-sub="estado">Consultar estado de mi pedido</button>
+    </div>
+
+    <div id="cliente-menu">
+      <div class="section-title"><h2>Nuestro menú</h2><p>Elige tus productos y arma tu pedido, sin llamadas ni WhatsApp.</p></div>
+      <div class="cats" id="cat-filters"></div>
+      <div class="menu-layout">
+        <div class="menu-grid" id="menu-grid"></div>
+        <div class="cart-panel">
+          <h3>Tu pedido</h3>
+          <div id="cart-items"></div>
+          <div class="cart-total"><span>Total</span><span id="cart-total">$0</span></div>
+          <div class="field"><label>Tu nombre</label><input id="input-nombre" placeholder="Ej: Camila Ruiz"></div>
+          <div class="field"><label>Mesa o para llevar</label><input id="input-mesa" placeholder="Ej: Mesa 4 / Para llevar"></div>
+          <button class="primary-btn" id="btn-confirmar">Confirmar pedido</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="cliente-estado" style="display:none;">
+      <div class="section-title"><h2>Estado de tu pedido</h2><p>Ingresa el código que recibiste al confirmar tu pedido.</p></div>
+      <div class="status-box">
+        <div class="search-row">
+          <input id="input-codigo" placeholder="Ej: CE-1032">
+          <button id="btn-buscar">Consultar</button>
+        </div>
+        <div id="estado-resultado"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISTA ADMINISTRADOR ============ -->
+  <section class="view" id="view-admin">
+    <div id="admin-gate">
+      <div class="gate">
+        <h3>Acceso de administrador</h3>
+        <p>Ingresa la clave de gestión para administrar productos y pedidos.</p>
+        <div class="err" id="gate-err">Clave incorrecta.</div>
+        <input type="password" id="gate-pass" placeholder="Clave">
+        <button class="primary-btn" id="gate-btn">Entrar</button>
+        <div class="hint">Clave de la demostración: <b>cafe123</b></div>
+      </div>
+    </div>
+
+    <div id="admin-panel" style="display:none;">
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-atab="productos">Gestión de productos</button>
+        <button class="admin-tab" data-atab="pedidos">Pedidos recibidos</button>
+        <button class="admin-tab" data-atab="reportes">Reportes</button>
+      </div>
+
+      <div class="admin-view active" id="admin-productos">
+        <div class="add-product-form">
+          <div class="field"><label>Nombre</label><input class="mini-input" id="np-nombre" placeholder="Ej: Latte"></div>
+          <div class="field"><label>Precio</label><input class="mini-input" id="np-precio" type="number" placeholder="8000"></div>
+          <div class="field"><label>Categoría</label>
+            <select class="mini-input" id="np-categoria">
+              <option>Bebidas calientes</option><option>Bebidas frías</option><option>Postres</option><option>Snacks</option>
+            </select>
+          </div>
+          <button class="primary-btn" id="btn-add-producto" style="margin-top:0;">Agregar</button>
+        </div>
+        <table>
+          <thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Disponibilidad</th><th></th></tr></thead>
+          <tbody id="tabla-productos"></tbody>
+        </table>
+      </div>
+
+      <div class="admin-view" id="admin-pedidos">
+        <table>
+          <thead><tr><th>Código</th><th>Cliente</th><th>Detalle</th><th>Total</th><th>Estado</th></tr></thead>
+          <tbody id="tabla-pedidos"></tbody>
+        </table>
+      </div>
+
+      <div class="admin-view" id="admin-reportes"></div>
+    </div>
+  </section>
+
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
